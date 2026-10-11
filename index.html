@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coil &amp; Crown</title>
+    <meta name="description" content="Natural hair studio in Surulere, Lagos. Braids, twist-outs and silk press. Book your appointment online.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#book">Skip to booking</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Coil &amp; Crown, home">Coil &amp; Crown</a>
+      <nav aria-label="Main">
+        <a href="#book">Services</a>
+        <a href="#visit">Visit</a>
+        <a class="btn btn-gold btn-small" href="#book">Book now</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <img class="hero-photo" src="images/hero.jpg" alt="" width="1600" height="900">
+        <div class="hero-copy">
+          <p class="status" id="status" aria-live="polite">Checking the studio...</p>
+          <h1>Natural hair, done properly</h1>
+          <p class="lead">Braids, twist-outs, and silk press in Surulere, Lagos. Pick a service, choose a time, and your chair is held.</p>
+          <a class="btn btn-gold" href="#book">Book an appointment</a>
+        </div>
+        <ul class="tickets" id="tickets" aria-label="popular services"></ul>
+      </section>
+
+      <section class="book" id="book" aria-labelledby="book-title">
+        <div class="wrap">
+          <h2 id="book-title">Book your appointment</h2>
+          <p class="intro">Four quick choices. You get a reference code to show at the studio.</p>
+
+          <div class="book-grid" id="book-grid">
+            <form id="booking-form" novalidate>
+              <fieldset class="step">
+                <legend><span class="n">1</span>Choose a service</legend>
+                <div class="svc-list" id="services"></div>
+              </fieldset>
+
+              <fieldset class="step">
+                <legend><span class="n">2</span>Pick a day</legend>
+                <div class="days" id="days"></div>
+              </fieldset>
+
+              <fieldset class="step">
+                <legend><span class="n">3</span>Pick a time</legend>
+                <p class="hint" id="times-hint" aria-live="polite">Choose a service and a day to see free times.</p>
+                <div class="times" id="times"></div>
+              </fieldset>
+
+              <fieldset class="step">
+                <legend><span class="n">4</span>Your details</legend>
+                <div class="field">
+                  <label for="name">Your name</label>
+                  <input id="name" name="name" type="text" autocomplete="name">
+                  <p class="error" id="name-error" hidden>Enter your name.</p>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone or WhatsApp number</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="08031234567">
+                  <p class="error" id="phone-error" hidden>Enter a phone number we can reach, like 08031234567.</p>
+                </div>
+                <div class="field">
+                  <label for="note">Anything we should know? (optional)</label>
+                  <textarea id="note" name="note" rows="3" placeholder="Hair length, the style you want, allergies..."></textarea>
+                </div>
+              </fieldset>
+            </form>
+
+            <aside class="summary" aria-label="Your booking">
+              <h3>Your booking</h3>
+              <dl>
+                <div><dt>Service</dt><dd id="sum-service"></dd></div>
+                <div><dt>Day</dt><dd id="sum-day"></dd></div>
+                <div><dt>Time</dt><dd id="sum-time"></dd></div>
+              </dl>
+              <p class="sum-total"><span>Total</span><strong id="sum-total"></strong></p>
+              <p class="error" id="form-error" role="alert" hidden></p>
+              <button class="btn btn-wide" type="submit" form="booking-form" id="confirm">Book appointment</button>
+              <p class="fine">You pay at the studio. Cancel for free up to 24 hours before.</p>
+            </aside>
+          </div>
+
+          <section class="confirmation" id="confirmation" aria-labelledby="c-title" hidden>
+            <div class="receipt">
+              <h3 id="c-title" tabindex="-1">You're booked, <span id="c-name"></span>.</h3>
+              <p class="c-ref-label">Your reference</p>
+              <p class="c-ref" id="c-ref"></p>
+              <dl class="c-details">
+                <div><dt>Service</dt><dd id="c-service"></dd></div>
+                <div><dt>When</dt><dd id="c-when"></dd></div>
+                <div><dt>Total</dt><dd id="c-total"></dd></div>
+              </dl>
+              <p class="fine" id="c-demo">Demo mode: this booking is saved in this browser only.</p>
+            </div>
+            <div class="c-actions">
+              <a class="btn" id="c-wa" href="#" target="_blank" rel="noopener">Message the studio on WhatsApp</a>
+              <button class="btn btn-ghost-dark" id="c-again" type="button">Book another appointment</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="cancel" id="cancel" aria-labelledby="cancel-title">
+        <div class="wrap">
+          <details id="cnacel-box">
+            <summary id="cancel-title">Need to cancel a booking?</summary>
+            <form id="cancel-form" novalidate>
+              <div class="field">
+                <label for="cancel-ref">Your reference</label>
+                <input id="cancel-ref" name="ref" type="text" autocomplete="off" autocapitalize="characters" placeholder="CC-AB12">
+              </div>
+              <div class="field">
+                <label for="cancel-phone">Phone number you booked with</label>
+                <input id="cancel-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="08031234567">
+              </div>
+              <button class="btn" type="submit" id="cancel-go">Cancel booking</button>
+              <p class="cancel-msg" id="cancel-msg" role="status" hidden></p>
+              <p class="fine">Free cancellation up to 24 hours before your appointment.</p>
+            </form>
+          </details>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <h2 id="gallery-title">Recent work</h2>
+          <div class="gallery-grid">
+            <figure data-optional>
+              <img src="images/work-1.jpg" alt="Neat knotless braids pulled into a high bun" width="800" height="1000" loading="lazy">
+            </figure>
+            <figure data-optional>
+              <img src="images/work-2.jpg" alt="Defined twist-out on natural hair" width="800" height="1000" loading="lazy">
+            </figure>
+            <figure data-optional>
+              <img src="images/work-3.jpg" alt="Sleek silk press at shoulder length" width="800" height="1000" loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="visit" id="visit" aria-labelledby="visit-title">
+        <div class="wrap visit-grid">
+          <div>
+            <h2 id="visit-title">Find the studio</h2>
+            <address>
+              27 Bode Thomas Street<br>
+              Surulere, Lagos
+            </address>
+            <a class="btn btn-ghost-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Surulere%20Lagos" target="_blank" rel="noopener">Get directions</a>
+          </div>
+          <table class="hours">
+            <caption class="sr-only">Opening hours</caption>
+            <tbody id="hours"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Coil &amp; Crown is a simple project. Website design and development by Chibuike.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
