@@ -106,7 +106,7 @@ function slotsFor(date, mins, busy) {
 // API_URL = "" runs demo mode: bookings live in this browser only.
 // Set it to python backend's address (no slash at the end) to use resl bookings, for example:
 //    const API_URL = "http://127.0.0.1:5001";
-const API_URL = "";
+const API_URL = "https://ugocity.pythonanywhere.com";
 const CANCEL_HOURS = 24; // keep the same as cancel_hours in backend/app.py
 const STORE_KEY = "coil-crown-bookings";
 let memory = [];
